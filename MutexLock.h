@@ -10,16 +10,21 @@
 
 class MutexLock {
     friend class MutexLockGuard;
+    friend class Condition;
 public:
     MutexLock();
+
     ~MutexLock();
 
     MutexLock& operator=(const MutexLock&) = delete;
+
     MutexLock(const MutexLock&) = delete;
 
 private:
     void lock();
+
     void unlock();
+
     pthread_mutex_t* getPthreadMutex();
 
 private:

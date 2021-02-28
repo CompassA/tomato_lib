@@ -10,9 +10,11 @@
 class MutexLockGuard {
 public:
     explicit MutexLockGuard(MutexLock&);
+
     ~MutexLockGuard();
 
     MutexLockGuard(const MutexLockGuard&) = delete;
+
     MutexLockGuard& operator=(const MutexLockGuard&) = delete;
 private:
     MutexLock& mutex_;
