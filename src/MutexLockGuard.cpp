@@ -2,7 +2,7 @@
 // Created by Tomato on 2021/2/18.
 //
 
-#include "MutexLockGuard.h"
+#include "../header/MutexLockGuard.h"
 
 MutexLockGuard::MutexLockGuard(MutexLock &mutex): mutex_(mutex) {
     mutex_.lock();

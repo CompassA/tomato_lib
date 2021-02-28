@@ -3,7 +3,7 @@
 //
 
 #include <cassert>
-#include "MutexLock.h"
+#include "../header/MutexLock.h"
 
 MutexLock::MutexLock(): holder_(0) {
     pthread_mutex_init(&mutex_, nullptr);

@@ -2,8 +2,8 @@
 // Created by Tomato on 2021/2/28.
 //
 
-#include "CountDownLatch.h"
-#include "MutexLockGuard.h"
+#include "../header/CountDownLatch.h"
+#include "../header/MutexLockGuard.h"
 
 CountDownLatch::CountDownLatch(const int& count): mutex_(), condition_(mutex_), count_(count) {
 }
