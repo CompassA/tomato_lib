@@ -1,7 +1,22 @@
 cmake_minimum_required(VERSION 3.16)
 project(tomato_lib)
 
-set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_CXX_FLAGS 
+        "${CAMKE_CXX_FLAGS}   \
+        -std=c++11            \
+        -g                    \
+        -Wall                 \
+        -Wextra               \
+        -Wconversion          \
+        -Wno-unused-parameter \
+        -Wold-style-cast      \
+        -Woverloaded-virtual  \
+        -Wpointer-arith       \
+        -Wshadow              \
+        -Wwrite-strings       \
+        -march=native         \
+        -rdynamic             \
+        -pthread")
 
 add_subdirectory(test)
 
