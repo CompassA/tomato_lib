@@ -11,16 +11,12 @@
 class CountDownLatch {
 public:
     explicit CountDownLatch(const int&);
-
     ~CountDownLatch() = default;
-
     CountDownLatch(const CountDownLatch&) = delete;
-
     CountDownLatch& operator=(const CountDownLatch&) = delete;
 
 public:
     void wait();
-
     void countDown();
 
 private:

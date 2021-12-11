@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.16)
+cmake_minimum_required(VERSION 3.19.2)
 project(tomato_lib)
 
 set(CMAKE_CXX_FLAGS 
@@ -19,23 +19,6 @@ set(CMAKE_CXX_FLAGS
         -pthread")
 
 add_subdirectory(test)
-
-add_library(${PROJECT_NAME} SHARED
-        src/MutexLock.cpp
-        src/MutexLockGuard.cpp
-        src/Condition.cpp
-        src/CountDownLatch.cpp main.cpp)
-
-target_include_directories(${PROJECT_NAME}
-    PUBLIC
-        header/MutexLock.h
-        header/MutexLockGuard.h
-        header/Condition.h
-        header/CountDownLatch.h
-        header/Singleton.h)
-
-add_executable(main main.cpp)
-
-target_link_libraries(main
-    PRIVATE
-        ${PROJECT_NAME})
+add_subdirectory(exe)
+add_subdirectory(static_lib)
+add_subdirectory(thread_lib)

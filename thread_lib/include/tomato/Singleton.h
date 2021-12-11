@@ -7,6 +7,8 @@
 
 #include <pthread.h>
 
+namespace tomato {
+
 template<typename T>
 class Singleton {
 public:
@@ -35,10 +37,12 @@ private:
     static T* value_;
 };
 
+
 template<typename T>
 pthread_once_t Singleton<T>::p_once_ = PTHREAD_ONCE_INIT;
 
 template<typename T>
 T* Singleton<T>::value_ = nullptr;
 
+}
 #endif //TOMATO_LIB_SINGLETON_H

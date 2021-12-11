@@ -3,7 +3,7 @@
 //
 
 #include <cassert>
-#include "../header/MutexLock.h"
+#include "../include/tomato/MutexLock.h"
 
 MutexLock::MutexLock(): holder_(0) {
     pthread_mutex_init(&mutex_, nullptr);
