@@ -3,18 +3,24 @@ project(thread_lib)
 add_library(${PROJECT_NAME} SHARED)
 
 set(LIB_SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/src)
+set(LIB_HEADER_DIR ${CMAKE_CURRENT_SOURCE_DIR}/include)
 target_sources(${PROJECT_NAME}
     PRIVATE
+        ${LIB_HEADER_DIR}/tomato/Condition.h
         ${LIB_SOURCE_DIR}/Condition.cpp
+        ${LIB_HEADER_DIR}/tomato/MutexLockGuard.h
         ${LIB_SOURCE_DIR}/MutexLockGuard.cpp
+        ${LIB_HEADER_DIR}/tomato/MutexLock.h
         ${LIB_SOURCE_DIR}/MutexLock.cpp
+        ${LIB_HEADER_DIR}/tomato/CountDownLatch.h
         ${LIB_SOURCE_DIR}/CountDownLatch.cpp
+        ${LIB_HEADER_DIR}/tomato/Singleton.h
 )
 
 
 target_include_directories(${PROJECT_NAME}
     INTERFACE
-        ${CMAKE_CURRENT_SOURCE_DIR}/include
+        ${LIB_HEADER_DIR}
 )
 
 target_link_libraries(${PROJECT_NAME}
