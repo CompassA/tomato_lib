@@ -1,5 +1,10 @@
+/*
+ * @Author: Tomato
+ * @Date: 2023-01-28 22:14:24
+ * @LastEditTime: 2023-01-29 22:30:26
+ */
 #include <gtest/gtest.h>
-#include "SmartPointer.h"
+#include <tomato/SmartPointer.h>
 #include <string.h>
 struct tomato_smart_test {
     int v1;

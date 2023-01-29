@@ -1,8 +1,10 @@
-//
-// Created by Tomato on 2021/2/18.
-//
+/*
+ * @Author: Tomato
+ * @Date: 2023-01-29 22:40:36
+ * @LastEditTime: 2023-01-29 22:40:36
+ */
 
-#include "../include/tomato/MutexLockGuard.h"
+#include <tomato/MutexLockGuard.h>
 
 MutexLockGuard::MutexLockGuard(MutexLock &mutex): mutex_(mutex) {
     mutex_.lock();

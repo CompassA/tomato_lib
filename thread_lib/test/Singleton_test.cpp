@@ -1,5 +1,10 @@
+/*
+ * @Author: Tomato
+ * @Date: 2023-01-29 22:35:03
+ * @LastEditTime: 2023-01-29 22:43:24
+ */
 #include <gtest/gtest.h>
-#include "Singleton.h"
+#include <tomato/Singleton.h>
 #include <stack>
 
 TEST(SINGLETON, singleton_test) {

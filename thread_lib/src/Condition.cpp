@@ -1,8 +1,10 @@
-//
-// Created by Tomato on 2021/2/28.
-//
+/*
+ * @Author: Tomato
+ * @Date: 2023-01-29 22:36:52
+ * @LastEditTime: 2023-01-29 22:36:53
+ */
 
-#include "../include/tomato/Condition.h"
+#include <tomato/Condition.h>
 
 Condition::Condition(MutexLock& mutex_lock): mutex_(mutex_lock) {
     pthread_cond_init(&cond_, nullptr);

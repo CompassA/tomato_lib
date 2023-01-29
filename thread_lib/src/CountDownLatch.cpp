@@ -1,9 +1,11 @@
-//
-// Created by Tomato on 2021/2/28.
-//
+/*
+ * @Author: Tomato
+ * @Date: 2023-01-29 22:37:10
+ * @LastEditTime: 2023-01-29 22:43:01
+ */
 
-#include "../include/tomato/CountDownLatch.h"
-#include "../include/tomato/MutexLockGuard.h"
+#include <tomato/CountDownLatch.h>
+#include <tomato/MutexLockGuard.h>
 
 CountDownLatch::CountDownLatch(const int& count): mutex_(), condition_(mutex_), count_(count) {
 }

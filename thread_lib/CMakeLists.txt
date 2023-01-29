@@ -16,10 +16,8 @@ target_sources(${PROJECT_NAME}
         ${LIB_SOURCE_DIR}/CountDownLatch.cpp
         ${LIB_HEADER_DIR}/tomato/Singleton.h
 )
-
-
 target_include_directories(${PROJECT_NAME}
-    INTERFACE
+    PUBLIC
         ${LIB_HEADER_DIR}
 )
 
@@ -29,6 +27,7 @@ target_link_libraries(${PROJECT_NAME}
         gtest
 )
 
+enable_testing()
 function(tomato_lib_test test_file)
     get_filename_component(test_target_name "${test_file}" NAME_WE)
 
@@ -42,4 +41,4 @@ function(tomato_lib_test test_file)
     add_test(NAME "${test_target_name}" COMMAND "${test_target_name}")
 endfunction(tomato_lib_test)
 
-tomato_lib_test("include/tomato/Singleton_test.cpp")
+tomato_lib_test("test/Singleton_test.cpp")

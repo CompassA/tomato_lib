@@ -1,9 +1,11 @@
-//
-// Created by Tomato on 2021/2/18.
-//
+/*
+ * @Author: Tomato
+ * @Date: 2023-01-29 22:40:24
+ * @LastEditTime: 2023-01-29 22:40:25
+ */
 
 #include <cassert>
-#include "../include/tomato/MutexLock.h"
+#include <tomato/MutexLock.h>
 
 MutexLock::MutexLock(): holder_(0) {
     pthread_mutex_init(&mutex_, nullptr);

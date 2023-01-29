@@ -1,5 +1,5 @@
-cmake_minimum_required(VERSION 3.19.2)
-project(tomato_lib)
+cmake_minimum_required(VERSION 3.22.2)
+project(tomato_lib VERSION 1.0.0 LANGUAGES CXX)
 
 set(CMAKE_CXX_FLAGS 
         "${CAMKE_CXX_FLAGS}   \
@@ -18,7 +18,9 @@ set(CMAKE_CXX_FLAGS
         -rdynamic             \
         -pthread")
 
-add_subdirectory(test)
+include(CTest) 
+include(CPack)
+
 add_subdirectory(exe)
 add_subdirectory(static_lib)
 add_subdirectory(thread_lib)
