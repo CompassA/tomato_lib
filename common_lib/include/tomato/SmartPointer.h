@@ -31,8 +31,26 @@ public:
         }
     }
 
+    /**
+     * @brief 拷贝构造
+     * 
+     * @param rhs 
+     */
     SmartPointer(const SmartPointer& rhs);
 
+    /**
+     * @brief 移动拷贝构造
+     * 
+     * @param rhs 
+     */
+    SmartPointer(SmartPointer&& rhs);
+
+    /**
+     * @brief 赋值运算符
+     * 
+     * @param rhs 
+     * @return SmartPointer& 
+     */
     SmartPointer& operator=(SmartPointer rhs) noexcept;
 
     /**
@@ -43,6 +61,15 @@ public:
      */
     template <typename U>
     SmartPointer(const SmartPointer<U> &rhs);
+
+    /**
+     * @brief 支持父子指针移动构造
+     * 
+     * @tparam U 同类或子类
+     * @param rhs 
+     */
+    template <typename U>
+    SmartPointer(SmartPointer<U> &&rhs);
 
     /**
      * @brief 析构时释放内存  
@@ -93,11 +120,19 @@ private:
 
 template <typename T>
 SmartPointer<T>::SmartPointer(const SmartPointer& rhs) {
-    ptr_ = rhs.ptr_;
-    if (ptr_) {
+    this->ptr_ = rhs.ptr_;
+    if (this->ptr_) {
         rhs.counter_->add();
-        counter_ = rhs.counter_;
+        this->counter_ = rhs.counter_;
     }
+}
+
+template <typename T>
+SmartPointer<T>::SmartPointer(SmartPointer&& rhs) {
+    this->ptr_ = rhs.ptr_;
+    this->counter_ = rhs.counter_;
+    rhs.ptr_ = nullptr;
+    rhs.counter_ = nullptr;
 }
 
 template <typename T>
@@ -159,7 +194,14 @@ SmartPointer<T>::SmartPointer(const SmartPointer<U> &rhs) {
     }
 }
 
-
+template <typename T>
+template <typename U>
+SmartPointer<T>::SmartPointer(SmartPointer<U> &&rhs) {
+    this->ptr_ = rhs.ptr_;
+    this->counter_ = rhs.counter_;
+    rhs.ptr_ = nullptr;
+    rhs.counter_ = nullptr;
+}
 
 
 }
