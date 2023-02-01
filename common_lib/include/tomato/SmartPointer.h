@@ -175,13 +175,10 @@ SmartPointer<T>::operator bool() const noexcept {
 
 template <typename T>
 long SmartPointer<T>::get_point_count() {
+    if (!this->counter_) {
+        return 0;
+    }
     return this->counter_->get();
-}
-
-
-template <typename T>
-void swap(SmartPointer<T> &lhs, SmartPointer<T> &rhs) noexcept {
-    lhs.swap(rhs);
 }
 
 template <typename T>
@@ -203,6 +200,30 @@ SmartPointer<T>::SmartPointer(SmartPointer<U> &&rhs) {
     rhs.counter_ = nullptr;
 }
 
+/**
+ * @brief 交换两个智能智能
+ * 
+ * @tparam T 
+ * @param lhs 
+ * @param rhs 
+ */
+template <typename T>
+void swap(SmartPointer<T> &lhs, SmartPointer<T> &rhs) noexcept {
+    lhs.swap(rhs);
+}
+
+/**
+ * @brief 构造智能指针
+ * 
+ * @tparam T 指针指向的类型
+ * @tparam ARGS 构造参数类型
+ * @param args 参数
+ * @return SmartPointer<T> 
+ */
+template <typename T, typename ...ARGS>
+SmartPointer<T> make_shared(ARGS&&... args) {
+    return SmartPointer<T>(new T(std::forward<ARGS>(args)...));
+}
 
 }
 #endif
